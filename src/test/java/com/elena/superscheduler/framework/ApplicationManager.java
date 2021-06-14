@@ -4,6 +4,7 @@ import com.elena.superscheduler.tests.TestBase;
 import com.google.common.io.Files;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -37,7 +38,7 @@ public class ApplicationManager{
 
 
         wd = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
-        wd.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 
         user = new UserHelper(wd);
@@ -71,5 +72,13 @@ public class ApplicationManager{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getVersion() {
+//      return
+//              wd.findElement
+//              (By.xpath("//*[@resource-id='com.example.svetlana.scheduler:id/app_version_res']"))
+//              .getText();
+        return wd.findElement(By.id("app_version_res")).getText();
     }
 }
